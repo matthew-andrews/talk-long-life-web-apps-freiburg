@@ -1,3 +1,3 @@
-# Long Life Web Apps
+# Long life web apps
 
-The talk.
+Long life web apps, the talk.
