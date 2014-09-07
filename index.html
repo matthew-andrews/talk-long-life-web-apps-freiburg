@@ -30,15 +30,6 @@
 
         <div class="reveal">
           <div class="slides">
-            <section style='text-align:left'>
-              <ul>
-                <li>These are the raw slides I used to give a short talk at <a href="http://jqueryuk.com/">jQuery UK in 2014</a>.</li>
-                <li>Where possible I've tried to link to blog posts or other links to provide more context</li>
-                <li>It's all on GitHub, if you spot a <a href="https://twitter.com/bdc/status/467753681489002496">mistake</a> please <a href="mailto:matt@mattandre.ws">let me know</a> or <a href="https://github.com/matthew-andrews/talk-long-life-web-apps">make a pull request</a></li>
-              </ul>
-              - <a href="http://twitter.com/andrewsmatt">@andrewsmatt</a>, <a href="http://mattandre.ws">mattandre.ws</a>
-            </section>
-
             <section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
               <h1>Long Life Web Apps</h1>
               <h3>Our battle against the browser</h3>
@@ -464,6 +455,61 @@ NETWORK
                 <li class='fragment' data-fragment-index='3'>Unfortunately, building a newspaper app isn't one of them</li>
               </ul>
             </section>
+
+            <section class="dark-background big-quote present" data-background="css/theme/ftlabs_images/blue-green-yellow.jpg" style="top: -230px; display: block;">
+              <h1>Service Workers</h1>
+            </section>
+
+            <section>
+              <h3>The spec says:</h3>
+              <blockquote>Service Workers are a new browser feature that provide event-driven scripts that run independently of web pages [&hellip;] They have access to domain-wide events such as network fetches. ServiceWorkers also have scriptable caches. Along with the ability to respond to network requests from certain web pages via script, this provides a way for applications to "go offline".</blockquote>
+              <a href="https://github.com/slightlyoff/ServiceWorker/">https://github.com/slightlyoff/ServiceWorker/</a>
+            </section>
+
+            <section>
+              <img src="content/normal.png" />
+            </section>
+
+            <section>
+              <img src="content/serviceworker.png" />
+            </section>
+
+            <section>
+              <h2>A Service Worker:</h2>
+              <ul>
+                <li>is a <strong>javascript file</strong> that you write and can be 'installed' onto your website</li>
+                <li>lets you to <strong>do things with requests</strong> between browser and server</li>
+                <li>has special caches that you can <strong>reliably store content</strong> in</li>
+              </ul>
+            </section>
+
+            <section>
+
+            <h3>More code than AppCache - but you can read what it does!</h3>
+            <pre><code data-trim>
+// Install process
+this.oninstalled = function(event) {
+  var myCache = new Cache(
+    '/lib/fonts/BentonSansBold.ttf',
+    '/lib/img/startupscreen/splash-logo.png'
+  );
+
+  // The coast is only clear when all the resources are ready.
+  event.waitUntil(myCache.ready());
+
+  // Add Cache to the global so it can be used later during onfetch
+  caches.set("my-cache", myCache);
+};
+
+// (scroll for more)
+
+// Request handling
+this.addEventListener("fetch", function(e) {
+  e.respondWith(caches.match(e.request));
+});
+</code></pre>
+            </section>
+
 
             <section class="dark-background big-quote present" data-background="css/theme/ftlabs_images/blue-green-yellow.jpg" style="top: -230px; display: block;">
               <h1>Backwards compatibility</h1>
