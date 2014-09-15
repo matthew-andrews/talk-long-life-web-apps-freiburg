@@ -102,7 +102,7 @@
             </section>
 
 			<section>
-			  <h2>Long life web apps?</h2>
+			  <h2>&ldquo;Long life web apps&rdquo;?</h2>
 			</section>
 
             <section>
@@ -211,12 +211,12 @@ The browser has a very good garbage collector - and when you're making normal we
         <section>
           <h2>Interleaved reads/writes</h2>
           <pre><code data-trim>
-var h1 = element1.clientHeight;              &lt;== Read (measures the element)
-element1.style.height = (h1 * 2) + 'px';     &lt;== Write (invalidates current layout)
-var h2 = element2.clientHeight;              &lt;== Read (measure again, so must trigger layout)
-element2.style.height = (h1 * 2) + 'px';     &lt;== Write (invalidates current layout)
-var h3 = element3.clientHeight;              &lt;== Read (measure again, so must trigger layout)
-element3.style.height = (h3 * 2) + 'px';     &lt;== Write (invalidates current layout)
+var h1 = element1.clientHeight;              // Read (measures the element)
+element1.style.height = (h1 * 2) + 'px';     // Write (invalidates current layout)
+var h2 = element2.clientHeight;              // Read (measure again, so must trigger layout)
+element2.style.height = (h1 * 2) + 'px';     // Write (invalidates current layout)
+var h3 = element3.clientHeight;              // Read (measure again, so must trigger layout)
+element3.style.height = (h3 * 2) + 'px';     // Write (invalidates current layout)
 etc.
           </code></pre>
         </section>
@@ -224,13 +224,13 @@ etc.
         <section>
           <h2>Batching reads/writes manually</h2>
           <pre><code data-trim>
-var h1 = element1.clientHeight;              &lt;== Read
-var h2 = element2.clientHeight;              &lt;== Read
-var h3 = element3.clientHeight;              &lt;== Read
-element1.style.height = (h1 * 2) + 'px';     &lt;== Write (invalidates current layout)
-element2.style.height = (h1 * 2) + 'px';     &lt;== Write (layout already invalidated)
-element3.style.height = (h3 * 2) + 'px';     &lt;== Write (layout already invalidated)
-h3 = element3.clientHeight                   &lt;== Read (triggers layout)
+var h1 = element1.clientHeight;              // Read
+var h2 = element2.clientHeight;              // Read
+var h3 = element3.clientHeight;              // Read
+element1.style.height = (h1 * 2) + 'px';     // Write (invalidates current layout)
+element2.style.height = (h1 * 2) + 'px';     // Write (layout already invalidated)
+element3.style.height = (h3 * 2) + 'px';     // Write (layout already invalidated)
+h3 = element3.clientHeight                   // Read (triggers layout)
 etc.
           </code></pre>
         </section>
