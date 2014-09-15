@@ -30,7 +30,7 @@
 
         <div class="reveal">
           <div class="slides">
-            <section class='logo-title dark-background' data-background='css/theme/ftlabs_images/purple-blue-2.jpg'>
+            <section data-background="content/ft.jpg" style="background: rgba(255, 255, 255, 0.9)">
               <h1>Long Life Web Apps</h1>
               <h3>Our battle against the browser</h3>
               <p>
@@ -39,7 +39,22 @@
               <aside class='notes'>Good hacks and great performance, smart multivariate responsiveness, and web apps that deserve far more than the lowly title of ‘page’.</aside>
             </section>
 
-            <section data-background="content/ft.jpg">
+            <section>
+              <img src="content/app-store-badge.png" style="margin-top: 200px;" />
+              <img src="content/no.png" style="box-shadow: none; position: relative; margin-top: -600px; background: none;" />
+            </section>
+
+            <section>
+              <h2>FT App History</h2>
+              <ul>
+                <li class='fragment' data-fragment-index="0">FT originally built <strong>native apps</strong> for iPhone &amp; iPad</li>
+                <li class='fragment' data-fragment-index="1">Early 2011: <a href='http://www.apple.com/uk/pr/library/2011/02/15Apple-Launches-Subscriptions-on-the-App-Store.html'>Apple launch App Store Subscriptions</a>, <a href="http://aboutus.ft.com/2011/06/07/financial-times-first-major-news-publisher-to-launch-new-browser-based-app-for-tablets/#axzz36KeIyoat">FT launch HTML5 web app</a></li>
+                <li class='fragment' data-fragment-index="2">August 2011: <a hrf="http://www.reuters.com/article/2011/08/31/us-apple-ft-idUSTRE77U1O020110831">FT pulls native apps from iTunes</a></li>
+                <li class='fragment' data-fragment-index="3">Now: iOS, Android, Windows, all major modern desktop browsers</li>
+              </ul>
+            </section>
+
+            <section data-background="css/theme/ftlabs_images/blue-green-yellow.jpg">
               <img src="content/ft-app-ipad.png"  style="box-shadow: none; background: none" data-fragment-index="0" class="fragment"/>
               <img src="content/ft-app-iphone.png" class="fragment" data-fragment-index="1"/ style="box-shadow: none; background: none">
               <img src="content/ft-app-android.png"  style="box-shadow: none; background: none; position: relative; top: -700px; width: 200%;" class="fragment" data-fragment-index="2"/>
@@ -48,9 +63,26 @@
             </section>
 
             <section>
-              <img src="content/app-store-badge.png" style="margin-top: 200px;" />
-              <img src="content/no.png" style="box-shadow: none; position: relative; margin-top: -600px; background: none;" />
+              <h3>Benefits</h3>
+              <ul>
+                <li class='fragment' data-fragment-index='0'>No review / approval process &amp; automatic updates</li>
+                <li class='fragment' data-fragment-index='1'>Instant install</li>
+                <li class='fragment' data-fragment-index='2'>One app, many platforms</li>
+                <li class='fragment' data-fragment-index='3'>Direct relationship with readers</li>
+                <li class='fragment' data-fragment-index='4'>Apple don't take 30% cut</li>
+                <li class='fragment' data-fragment-index='5'>Native-ish: homescreen icon, swiping, offline, fast (enough)</li>
+              </ul>
             </section>
+
+            <section>
+              <h2>The catch?</h2>
+              They're really difficult to make well :(
+            </section>
+
+
+			<section>
+              <video data-autoplay class="stretch" src="content/video.mov"></video>
+			</section>
 
             <section>
               <img src="content/economist-chrome.png" />
@@ -58,22 +90,20 @@
 
             <section>
               <h2 style="white-space:nowrap">Our web apps</h2>
-              <div style="float: right" class='fragment' data-fragment-index='0'><span style="font-size: 251px; top: 70px; position: relative; }">}</span> 'Long life' web app?
-              </div>
               <ul>
                 <li><strong>Single</strong> page app</li>
-                <li>'<strong>Many</strong> page app' - website?*</li>
+                <li>'<strong>Many</strong> page app' - website?</li>
                 <li><strong>Cross platform</strong> - 1 codebase for all</li>
                 <li><strong>Offline</strong> first</li>
-                <li>Time on page <strong>very long</strong> (up to days)**</li>
-                <li>Once installed, code on device <strong>forever</strong>***</li>
+                <li>Time on page <strong>very long</strong> (up to days)</li>
+                <li>Once installed, code on device <strong>forever</strong></li>
               </ul>
-              <p style="font-size:60%">* Economist only. FT App, soon.</p>
-              <p style="font-size:60%">** On platforms that can run web apps in the background (Windows, Blackberry)</p>
-              <p style="font-size:60%">*** Well, until clear caches.</p>
               <aside class="notes">I'm a developer on the FT Web app, which is a single page web app that works offline across all major mobile and desktop browsers - creating a full-screen native-app like experience without having to be distributed through any app stores.  I'm going to talk through some of the challenges we faced when building this sort of website.</aside>
-
             </section>
+
+			<section>
+			  <h2>Long life web apps?</h2>
+			</section>
 
             <section>
             <h3 style="white-space: nowrap;">Now need to think <strong>much more</strong> about:</h3>
@@ -208,6 +238,11 @@ etc.
         <section>
           <h2>Nobody writes code like that</h2>
         </section>
+		<section>
+			<h3>Dynamic multi-line ellipsis</h3>
+			<h2 class='fragment' data-fragment-index='1'>this doesn't exist in CSS</h2>
+			<p class='fragment' data-fragment-index='2'>github.com/ftlabs/ftellipsis</p>
+		</section>
         <section>
           <img src="content/webapp.png" />
         </section>
