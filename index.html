@@ -54,6 +54,10 @@
               </ul>
             </section>
 
+			<section>
+              <video data-autoplay class="stretch" src="content/video.mov"></video>
+			</section>
+
             <section data-background="css/theme/ftlabs_images/blue-green-yellow.jpg">
               <img src="content/ft-app-ipad.png"  style="box-shadow: none; background: none" data-fragment-index="0" class="fragment"/>
               <img src="content/ft-app-iphone.png" class="fragment" data-fragment-index="1"/ style="box-shadow: none; background: none">
@@ -78,11 +82,6 @@
               <h2>The catch?</h2>
               They're really difficult to make well :(
             </section>
-
-
-			<section>
-              <video data-autoplay class="stretch" src="content/video.mov"></video>
-			</section>
 
             <section>
               <img src="content/economist-chrome.png" />
@@ -493,12 +492,6 @@ NETWORK
             </section>
 
             <section>
-              <h3>The spec says:</h3>
-              <blockquote>Service Workers are a new browser feature that provide event-driven scripts that run independently of web pages [&hellip;] They have access to domain-wide events such as network fetches. ServiceWorkers also have scriptable caches. Along with the ability to respond to network requests from certain web pages via script, this provides a way for applications to "go offline".</blockquote>
-              <a href="https://github.com/slightlyoff/ServiceWorker/">https://github.com/slightlyoff/ServiceWorker/</a>
-            </section>
-
-            <section>
               <img src="content/normal.png" />
             </section>
 
@@ -520,7 +513,7 @@ NETWORK
             <h3>More code than AppCache - but you can read what it does!</h3>
             <pre><code data-trim>
 // Install process
-this.oninstalled = function(event) {
+this.oninstall = function(event) {
   var myCache = new Cache(
     '/lib/fonts/BentonSansBold.ttf',
     '/lib/img/startupscreen/splash-logo.png'
@@ -536,12 +529,12 @@ this.oninstalled = function(event) {
 // (scroll for more)
 
 // Request handling
-this.addEventListener("fetch", function(e) {
+this.onfetch = function(e) {
   e.respondWith(caches.match(e.request));
-});
+};
 </code></pre>
+			<p>Offline news demo app at <a href="https://github.com/serviceworker/offline-news-service-worker">github.com/serviceworker/offline-news-service-worker</a></p>
             </section>
-
 
             <section class="dark-background big-quote present" data-background="css/theme/ftlabs_images/blue-green-yellow.jpg" style="top: -230px; display: block;">
               <h1>Backwards compatibility</h1>
@@ -577,14 +570,14 @@ this.addEventListener("fetch", function(e) {
                 <li><strong>Browsers do much more than render</strong>.  If you're website doesn't restore state well (scroll, form data) users will be upset</li>
                 <li><strong>Offline is possible <u>today</u></strong>, with enough persistence</li>
                 <li><strong>Test</strong>, <strong>measure</strong> and <strong>monitor</strong> everything, including 3rd parties</li>
-                <li class='fragment' data-fragment-index='0'>Never listen to people who tell you not to use any particular technology</li>
+                <li class='fragment' data-fragment-index='0'>I'm not even sure anymore whether this is a good idea</li>
               </ul>
             </section>
 
             <section>
               <a href="https://twitter.com/andrewsmatt/status/367599219512594434">
-                <h2>So don't listen to me</h2>
-                <img src="content/dontusejquery.png" class='stretch'/>
+                <h3>Tim Berners Lee:</h3>
+				<h2>&ldquo;Thank you for building a web app&rdquo;</h2>
               </a>
             </section>
 
